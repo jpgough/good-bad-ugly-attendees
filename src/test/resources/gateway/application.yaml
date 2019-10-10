@@ -1,0 +1,19 @@
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      routes:
+        - id: test
+          uri: http://numbersapi.com
+          predicates:
+            - Path=/num/**
+          filters:
+            - RewritePath=/num/(?<segment>.*), /$\{segment}/trivia
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+    reactor.netty: DEBUG
