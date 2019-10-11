@@ -4,8 +4,16 @@ spring:
       default-filters:
       routes:
         - id: test
-          uri: http://192.168.1.5:12345/
+          uri: http://${HOST_MACHINE_IP_ADDRESS}:12345/
           predicates:
             - Path=/a/**
           filters:
             - RewritePath=/a/(?<segment>.*), /$\{segment}/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+    reactor.netty: DEBUG
