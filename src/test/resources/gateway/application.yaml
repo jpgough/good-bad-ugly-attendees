@@ -6,6 +6,6 @@ spring:
         - id: test
           uri: http://${HOST_MACHINE_IP_ADDRESS}:12345/
           predicates:
-            - Path=/a/**
+            - Path=/attendees/**
           filters:
-            - RewritePath=/a/(?<segment>.*), /$\{segment}/
+            - RewritePath=/attendees/(?<segment>.*), /$\{segment}/
