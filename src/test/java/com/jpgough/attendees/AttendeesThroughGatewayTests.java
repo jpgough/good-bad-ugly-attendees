@@ -40,7 +40,7 @@ public class AttendeesThroughGatewayTests {
                     BindMode.READ_ONLY);
 
     @Test
-    public void delete_call_with_bdy_supported_by_spring_cloud_gateway() {
+    public void delete_call_with_body_supported_by_spring_cloud_gateway() {
         String address = scgVanillaContainer.getContainerIpAddress();
         Integer port = scgVanillaContainer.getFirstMappedPort();
 
