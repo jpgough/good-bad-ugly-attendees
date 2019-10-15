@@ -65,4 +65,11 @@ public class AttendeesController {
 
         return attendees;
     }
+
+    @DeleteMapping("user/{id}")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteAttendee(@PathVariable Integer id, @RequestBody UserDetail body) {
+        log.info(body.toString());
+    }
 }
