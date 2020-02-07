@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      routes:
+        - id: test
+          uri: http://${HOST_MACHINE_IP_ADDRESS}:12345/
+          predicates:
+            - Path=/attendees/**
+          filters:
+            - RewritePath=/attendees/(?<segment>.*), /$\{segment}/
