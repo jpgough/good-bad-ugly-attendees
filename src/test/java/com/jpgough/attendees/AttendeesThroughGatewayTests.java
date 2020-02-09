@@ -1,37 +1,40 @@
 package com.jpgough.attendees;
 
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Ignore
-@RunWith(SpringRunner.class)
+
+@Disabled
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
         properties = {"server.port=12345"}
 )
 @DirtiesContext
+@Testcontainers
 public class AttendeesThroughGatewayTests {
 
     private static final int EXPOSED_GATEWAY_PORT = 8080;
 
-    @Rule
+    @Container
     public GenericContainer scgVanillaContainer = new GenericContainer<>("jpgough/vanilla-scg")
             .withExposedPorts(EXPOSED_GATEWAY_PORT)
             .withEnv("HOST_MACHINE_IP_ADDRESS", IPUtils.myIPAddress())
