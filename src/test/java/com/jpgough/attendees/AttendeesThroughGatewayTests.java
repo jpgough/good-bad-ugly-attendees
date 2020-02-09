@@ -35,7 +35,6 @@ public class AttendeesThroughGatewayTests {
     private static final int EXPOSED_GATEWAY_PORT = 8080;
 
     @Container
-//    @Rule
     public GenericContainer scgVanillaContainer = new GenericContainer<>("jpgough/vanilla-scg")
             .withExposedPorts(EXPOSED_GATEWAY_PORT)
             .withEnv("HOST_MACHINE_IP_ADDRESS", IPUtils.myIPAddress())
