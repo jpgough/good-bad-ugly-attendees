@@ -6,7 +6,7 @@ import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-public class IPUtils {
+public class IpDiscovery {
 
     public static String myIPAddress() {
         String candidateIPAddress = null;
@@ -36,6 +36,8 @@ public class IPUtils {
             e.printStackTrace();
         }
 
-        throw new RuntimeException("Unable to find a candidate IP Address");
+        //FIXME only works on mac
+        return "host.docker.internal";
+        //throw new RuntimeException("Unable to find a candidate IP Address");
     }
 }

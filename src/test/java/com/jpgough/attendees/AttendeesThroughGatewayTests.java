@@ -37,7 +37,7 @@ public class AttendeesThroughGatewayTests {
     @Container
     public GenericContainer scgVanillaContainer = new GenericContainer<>("jpgough/vanilla-scg")
             .withExposedPorts(EXPOSED_GATEWAY_PORT)
-            .withEnv("HOST_MACHINE_IP_ADDRESS", IPUtils.myIPAddress())
+            .withEnv("HOST_MACHINE_IP_ADDRESS", IpDiscovery.myIPAddress())
             .withClasspathResourceMapping("gateway/application.yaml",
                     "/etc/gateway/config/application.yaml",
                     BindMode.READ_ONLY);
